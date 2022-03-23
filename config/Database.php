@@ -1,6 +1,6 @@
 <?php
     class Database {
-        // Database parameters THESE NEED TO BE UPDATED WHEN CONNECTING TO HEROKU AND BEFORE UPLOADING TO GITHUB!!! PASSWORD CANNOT BE IN THE FILE!!!
+        // Database parameters THESE NEED TO BE UPDATED WHEN CONNECTING TO HEROKU
         private $host = "localhost";
         private $db_name = "quotesdb";
         private $username = "root";
