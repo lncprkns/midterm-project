@@ -19,7 +19,7 @@ $category->category = $data->category;
 
 if($category->create()) {
     echo json_encode(
-        array('id' => $db->lastInsertId(), 'category' => $category));
+        array('id' => $db->lastInsertId(), 'category' => $category->category));
 } else {
     echo json_encode(
         array("message" => "Category Not Created"));
