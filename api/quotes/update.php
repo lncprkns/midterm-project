@@ -26,11 +26,11 @@ if(isset($quote->id) && isset($quote->quote) && isset($quote->authorId) && isset
             array("id" => $quote->id, "quote" => $quote->quote, "authorId" => $quote->authorId, "categoryId" => $quote->categoryId));
     } else {
         echo json_encode(
-            array("message" => "Quote Not Updated"));
+            array("message" => "No Quotes Found"));
     }
 } else {
     echo json_encode(
         array("message" => "Missing Required Parameters"));
     }
-    
+
 exit();
