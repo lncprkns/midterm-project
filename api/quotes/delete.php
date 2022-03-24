@@ -16,12 +16,17 @@ $data = json_decode(file_get_contents("php://input"));
 $quote->id = $data->id;
 
 // Delete quote MIGHT NEED TO UPDATE TO SHOW WHAT WAS DELETED. CHECK ON THAT
-if($quote->delete()) {
+if(is_null($quote->id)){
     echo json_encode(
-        array("id" => "{$data->id} deleted"));
+        array("message" => "No quotes found"));
 } else {
-    echo json_encode(
-        array("message" => "{$data->id} not deleted"));
+    if($quote->delete()) {
+        echo json_encode(
+            array("id" => "{$data->id} deleted"));
+    } else {
+        echo json_encode(
+            array("message" => "{$data->id} not deleted"));
+    }
 }
 
 exit();
