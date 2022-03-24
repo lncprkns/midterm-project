@@ -23,6 +23,12 @@ $author_arr = array(
 );
 
 // Make JSON
+
+if(isset($author->id)) {
 print_r(json_encode($author_arr));
+} else {
+    echo json_encode(
+        array("message" => "authorId Not Found"));
+    }
 
 exit();
