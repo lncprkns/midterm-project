@@ -22,7 +22,7 @@ $quote->categoryId = $data->categoryId;
 // Update quote
 if($quote->update()) {
     echo json_encode(
-        array("message" => "Quote Updated"));
+        array("id" => $quote->id, "quote" => $quote->quote, "authorId" => $quote->authorId, "categoryId" => $quote->categoryId));
 } else {
     echo json_encode(
         array("message" => "Quote Not Updated"));

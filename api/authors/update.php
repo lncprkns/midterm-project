@@ -20,7 +20,7 @@ $author->author = $data->author;
 // Update authors
 if($author->update()) {
     echo json_encode(
-        array("message" => "Author Updated"));
+        array("id" => $author->id, "author" => $author->author));
 } else {
     echo json_encode(
         array("message" => "Author Not Updated"));
