@@ -15,10 +15,10 @@ $data = json_decode(file_get_contents("php://input"));
 // Set ID to update
 $quote->id = $data->id;
 
-// Delete quote MIGHT NEED TO UPDATE TO SHOW WHAT WAS DELETED. CHECK ON THAT
-if(is_null($quote->id)){
+// Delete quote
+if(is_null($data->id)){
     echo json_encode(
-        array("message" => "No quotes found"));
+        array("message" => "No Quotes Found"));
 } else {
     if($quote->delete()) {
         echo json_encode(
