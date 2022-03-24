@@ -37,7 +37,7 @@ if($num > 0) {
     print_r(json_encode($category_arr));
 } else {
     echo json_encode(
-        array('message' => 'No Categories Found'));
+        array('message' => 'categoryId Not Found'));
 }
 
 exit();
