@@ -19,7 +19,7 @@ $author->author = $data->author;
 // create post
 if($author->create()) {
     echo json_encode(
-        array("message" => "author: {$data->author}"));
+        array('id' => $db->lastInsertId(), 'author' => $author));
 } else {
     echo json_encode(
         array("message" => "Author Not Created"));
