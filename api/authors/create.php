@@ -14,15 +14,26 @@ $data = json_decode(file_get_contents("php://input"));
 
 $author->author = $data->author;
 
-// Need lastInsertId() in here in order to get the id to get the correct output
-
 // create post
-if($author->create()) {
-    echo json_encode(
-        array('id' => $db->lastInsertId(), 'author' => $author->author));
+
+if(isset($author->author)) {
+    if($author->create()) {
+        echo json_encode(
+            array('id' => $db->lastInsertId(), 'author' => $author->author));
+    } else {
+        echo json_encode(
+            array("message" => "Author Not Created"));
+    }
 } else {
     echo json_encode(
-        array("message" => "Author Not Created"));
-}
+        array("message" => "Missing Required Parameters"));
+    }
 
+// if($author->create()) {
+//     echo json_encode(
+//         array('id' => $db->lastInsertId(), 'author' => $author->author));
+// } else {
+//     echo json_encode(
+//         array("message" => "Author Not Created"));
+// }
 exit();
