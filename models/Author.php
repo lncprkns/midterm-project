@@ -103,7 +103,7 @@
         public function delete() {
             // Create query
             //$query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
-            $query = 'DELETE FROM'.$this->table.'WHERE id = :id';
+            $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
 
             // Prepare Statement
             $stmt = $this->conn->prepare($query);
