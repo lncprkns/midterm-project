@@ -19,8 +19,6 @@ $quote->categoryId = $data->categoryId;
 
 // create quote
 
-// if(isset($author->author))
-
 if(isset($quote->quote) && isset($quote->authorId) && isset($quote->categoryId)) {
     if($quote->create()) {
         echo json_encode(
