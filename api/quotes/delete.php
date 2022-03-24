@@ -17,16 +17,12 @@ $quote->id = $data->id;
 
 // Delete quote MIGHT NEED TO UPDATE TO SHOW WHAT WAS DELETED. CHECK ON THAT
 
-if(isset($quote->id)) {
-    if($quote->delete()) {
-        echo json_encode(
-            array("id" => "{$data->id} deleted"));
-    } else {
-        echo json_encode(
-            array("message" => "{$data->id} not deleted"));
-    }
+if($quote->delete()) {
+    echo json_encode(
+        array("id" => "{$data->id} deleted"));
 } else {
     echo json_encode(
-        array("message" => "No Quotes Found"));
-    }
+        array("message" => "{$data->id} not deleted"));
+}
+
 exit();
