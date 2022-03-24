@@ -18,17 +18,25 @@ $quote->categoryId = $data->categoryId;
 
 
 // create quote
-if($quote->create()) {
-    echo json_encode(
-        array(
-            'id' => $db->lastInsertId(),
-            'quote' => $quote->quote,
-            'authorId' => $quote->authorId,
-            'categoryId' => $quote->categoryId)
-        );
+
+// if(isset($author->author))
+
+if(isset($quote->quote) && isset($quote->authorId) && isset($quote->categoryId)) {
+    if($quote->create()) {
+        echo json_encode(
+            array(
+                'id' => $db->lastInsertId(),
+                'quote' => $quote->quote,
+                'authorId' => $quote->authorId,
+                'categoryId' => $quote->categoryId)
+            );
+    } else {
+        echo json_encode(
+            array("message" => "Quote Not Created"));
+    }
 } else {
     echo json_encode(
-        array("message" => "Quote Not Created"));
-}
+        array("message" => "Missing Required Parameters"));
+    }
 
 exit();
