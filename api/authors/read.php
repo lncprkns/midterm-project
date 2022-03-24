@@ -16,7 +16,7 @@ $result = $author->read();
 $num = $result->rowCount();
 
 // Check if any authors
-if($num > 0 && isset($author)) {
+if($num > 0) {
     // Author array
     $author_arr = array();
 

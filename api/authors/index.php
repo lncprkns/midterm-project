@@ -7,9 +7,11 @@ if ($method === 'OPTIONS') {
     header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
 }
 
+// Should probably use a isset GET id in here instead, but this mashed together from w3schools seems to work
+// update to the above if time
+
 $id = filter_input(INPUT_GET,"id");
 
-// if time, maybe turn the following into switch statements instead?
 
 if ($method == "GET" && isset($id) && !empty($id)) {
   require_once("./read_single.php");
