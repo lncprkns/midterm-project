@@ -14,15 +14,18 @@ $data = json_decode(file_get_contents("php://input"));
 
 $category->category = $data->category;
 
-// Need lastInsertId() in here in order to get the id created in order to get the correct echo return
-// create category
 
-if($category->create()) {
-    echo json_encode(
-        array('id' => $db->lastInsertId(), 'category' => $category->category));
+if(isset($category->category)) {
+    if($category->create()) {
+        echo json_encode(
+            array('id' => $db->lastInsertId(), 'category' => $category->category));
+    } else {
+        echo json_encode(
+            array("message" => "Category Not Created"));
+    }
 } else {
     echo json_encode(
-        array("message" => "Category Not Created"));
-}
-
+        array("message" => "Missing Required Parameters"));
+    }
+    
 exit();
