@@ -20,12 +20,17 @@ $quote->authorId = $data->authorId;
 $quote->categoryId = $data->categoryId;
 
 // Update quote
-if($quote->update()) {
-    echo json_encode(
-        array("id" => $quote->id, "quote" => $quote->quote, "authorId" => $quote->authorId, "categoryId" => $quote->categoryId));
+if(isset($quote->id) && isset($quote->quote) && isset($quote->authorId) && isset($quote->categoryId)) {
+    if($quote->update()) {
+        echo json_encode(
+            array("id" => $quote->id, "quote" => $quote->quote, "authorId" => $quote->authorId, "categoryId" => $quote->categoryId));
+    } else {
+        echo json_encode(
+            array("message" => "Quote Not Updated"));
+    }
 } else {
     echo json_encode(
-        array("message" => "Quote Not Updated"));
-}
-
+        array("message" => "Missing Required Parameters"));
+    }
+    
 exit();

@@ -18,12 +18,17 @@ $author->id = $data->id;
 $author->author = $data->author;
 
 // Update authors
-if($author->update()) {
-    echo json_encode(
-        array("id" => $author->id, "author" => $author->author));
+if(isset($author->id) && isset($author->author)){
+    if($author->update()) {
+        echo json_encode(
+            array("id" => $author->id, "author" => $author->author));
+    } else {
+        echo json_encode(
+            array("message" => "Author Not Updated"));
+    }
 } else {
     echo json_encode(
-        array("message" => "Author Not Updated"));
-}
-
+        array("message" => "Missing Required Parameters"));
+    }
+    
 exit();
